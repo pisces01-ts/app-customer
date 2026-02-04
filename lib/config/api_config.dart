@@ -1,34 +1,35 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 class ApiConfig {
-  // เปลี่ยน baseUrl ตาม environment
-  // สำหรับ Android Emulator ใช้ 10.0.2.2
-  // สำหรับ iOS Simulator ใช้ localhost
-  // สำหรับ Physical Device ใช้ IP ของเครื่อง server
-  
-  static const String baseUrl = 'http://10.0.2.2/REPAIR_API';
-  // static const String baseUrl = 'http://localhost/REPAIR_API';
-  // static const String baseUrl = 'http://192.168.1.xxx/REPAIR_API';
+  // Use localhost for web, 10.0.2.2 for Android emulator
+  static String get baseUrl => kIsWeb ? 'http://localhost/REPAIR_API' : 'http://10.0.2.2/REPAIR_API';
   
   // Auth endpoints
-  static const String login = '$baseUrl/auth/login.php';
-  static const String register = '$baseUrl/auth/register_customer.php';
-  static const String forgotPassword = '$baseUrl/auth/forgot_password.php';
-  static const String resetPassword = '$baseUrl/auth/reset_password.php';
-  static const String getProfile = '$baseUrl/auth/get_user_profile.php';
-  static const String updateProfile = '$baseUrl/auth/update_profile.php';
-  static const String checkCurrentJob = '$baseUrl/auth/check_current_job.php';
+  static String get login => '$baseUrl/customer/login.php';
+  static String get register => '$baseUrl/customer/register.php';
+  static String get forgotPassword => '$baseUrl/customer/forgot_password.php';
+  static String get resetPassword => '$baseUrl/customer/reset_password.php';
+  static String get getProfile => '$baseUrl/customer/get_profile.php';
+  static String get updateProfile => '$baseUrl/customer/update_profile.php';
+  static String get checkCurrentJob => '$baseUrl/customer/check_current_job.php';
   
   // Customer endpoints
-  static const String getServices = '$baseUrl/customer/get_services.php';
-  static const String submitRequest = '$baseUrl/customer/submit_request.php';
-  static const String getRequestStatus = '$baseUrl/customer/get_request_status.php';
-  static const String cancelRequest = '$baseUrl/customer/cancel_request.php';
-  static const String getServiceHistory = '$baseUrl/customer/get_service_history.php';
-  static const String submitReview = '$baseUrl/customer/submit_review.php';
-  static const String nearbyTechnicians = '$baseUrl/customer/nearby_technicians.php';
-  static const String uploadImage = '$baseUrl/customer/upload_image.php';
-  static const String notifications = '$baseUrl/customer/notifications.php';
-  static const String updateLocation = '$baseUrl/customer/update_location.php';
-  static const String getPriceEstimate = '$baseUrl/customer/get_price_estimate.php';
+  static String get getServices => '$baseUrl/customer/get_repair_types.php';
+  static String get submitRequest => '$baseUrl/customer/submit_request.php';
+  static String get getRequests => '$baseUrl/customer/get_requests.php';
+  static String get cancelRequest => '$baseUrl/customer/cancel_request.php';
+  static String get getServiceHistory => '$baseUrl/customer/get_requests.php';
+  static String get submitReview => '$baseUrl/customer/submit_review.php';
+  static String get findNearbyTechnicians => '$baseUrl/customer/find_nearby_technicians.php';
+  static String get getTechnicianProfile => '$baseUrl/customer/get_technician_profile.php';
+  static String get selectTechnician => '$baseUrl/customer/select_technician.php';
+  static String get uploadImage => '$baseUrl/customer/upload_image.php';
+  static String get notifications => '$baseUrl/customer/notifications.php';
+  static String get updateLocation => '$baseUrl/customer/update_location.php';
+  
+  // Chat endpoints
+  static String get sendMessage => '$baseUrl/chat/send_message.php';
+  static String get getMessages => '$baseUrl/chat/get_messages.php';
   
   // Timeouts
   static const Duration connectionTimeout = Duration(seconds: 30);
